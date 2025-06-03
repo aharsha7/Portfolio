@@ -21,7 +21,7 @@ const Hero = ({ scrollTo }) => (
         Aharsha Vhardhan
       </h1>
       <p className="text-xl md:text-2xl text-gray-300 mb-8 animate-fade-in-up delay-400">
-        Full Stack Developer & Creative Designer
+        Full Stack Developer
       </p>
       <p className="text-lg text-gray-400 mb-12 max-w-2xl mx-auto animate-fade-in-up delay-600">
         I craft beautiful digital experiences with modern technologies. Passionate about clean code, stunning designs, and innovative solutions.
