@@ -12,19 +12,21 @@ const About = () => (
       <div className="grid md:grid-cols-2 gap-12 items-center">
         <div className="space-y-6">
           <p className="text-lg text-gray-300 leading-relaxed">
-            I'm a passionate full-stack developer with over 5 years of experience creating digital solutions. I love crafting exceptional user experiences.
+            I'm a passionate full-stack developer with over 1 year of experience creating digital solutions. I love crafting exceptional user experiences.
           </p>
           <p className="text-lg text-gray-300 leading-relaxed">
-            Outside of coding, I explore new technologies, contribute to open-source, and mentor fellow devs. I believe in clean code and beautiful UI.
+            Outside of coding, I explore new technologies, contribute to open-source. I believe in clean code and beautiful UI.
           </p>
           <div className="flex flex-wrap gap-4 pt-4">
             <span className="px-4 py-2 bg-blue-500/20 rounded-full text-blue-300 border border-blue-500/30">Problem Solver</span>
             <span className="px-4 py-2 bg-purple-500/20 rounded-full text-purple-300 border border-purple-500/30">Creative Thinker</span>
             <span className="px-4 py-2 bg-green-500/20 rounded-full text-green-300 border border-green-500/30">Team Player</span>
           </div>
-          <button className="flex items-center gap-2 px-6 py-3 bg-gradient-to-r from-blue-500 to-purple-600 rounded-lg font-semibold hover:from-blue-600 hover:to-purple-700 transition-all duration-300 transform hover:scale-105">
+          <a 
+          href="/aharsha_full_stack.pdf"
+          className="flex items-center gap-2 px-6 py-3 bg-gradient-to-r from-blue-500 to-purple-600 rounded-lg font-semibold hover:from-blue-600 hover:to-purple-700 transition-all duration-300 transform hover:scale-105">  
             <Download size={20} /> Download Resume
-          </button>
+          </a>
         </div>
 
         <div className="relative">
