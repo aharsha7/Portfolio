@@ -1,0 +1,27 @@
+// components/Footer.jsx
+import React from "react";
+import { Github, Linkedin, Mail } from "lucide-react";
+
+const Footer = () => (
+  <footer className="py-12 bg-gray-800/50 border-t border-gray-800">
+    <div className="max-w-6xl mx-auto px-4 text-center">
+      <div className="text-2xl font-bold bg-gradient-to-r from-blue-400 to-purple-500 bg-clip-text text-transparent mb-4">
+        Portfolio
+      </div>
+      <p className="text-gray-400 mb-6">Built with React & Tailwind CSS.</p>
+      <div className="flex justify-center space-x-6">
+        <a href="https://github.com/aharsha7" className="text-gray-400 hover:text-white transition-colors">
+          <Github size={24} />
+        </a>
+        <a href="https://www.linkedin.com/in/aharsha-vhardhan-s-/" className="text-gray-400 hover:text-white transition-colors">
+          <Linkedin size={24} />
+        </a>
+        <a href="mailto:aharsha7na@gmail.com" className="text-gray-400 hover:text-white transition-colors">
+          <Mail size={24} />
+        </a>
+      </div>
+    </div>
+  </footer>
+);
+
+export default Footer;
