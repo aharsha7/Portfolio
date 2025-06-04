@@ -1,4 +1,3 @@
-// components/Navbar.jsx
 import React from "react";
 import { Menu, X } from "lucide-react";
 
@@ -18,7 +17,7 @@ const Navbar = ({ isMenuOpen, setIsMenuOpen, activeSection, scrollTo }) => {
               <button
                 key={item}
                 onClick={() => scrollTo(item)}
-                className={`capitalize transition-colors duration-300 hover:text-blue-400 ${
+                className={`capitalize transition duration-300 hover:text-blue-400 ${
                   activeSection === item ? "text-blue-400" : "text-gray-300"
                 }`}
               >
@@ -29,7 +28,7 @@ const Navbar = ({ isMenuOpen, setIsMenuOpen, activeSection, scrollTo }) => {
 
           <button
             onClick={() => setIsMenuOpen(!isMenuOpen)}
-            className="md:hidden p-2 rounded-lg hover:bg-gray-800 transition-colors"
+            className="md:hidden p-2 rounded-lg hover:bg-gray-800 transition"
           >
             {isMenuOpen ? <X size={24} /> : <Menu size={24} />}
           </button>
@@ -41,7 +40,7 @@ const Navbar = ({ isMenuOpen, setIsMenuOpen, activeSection, scrollTo }) => {
               <button
                 key={item}
                 onClick={() => scrollTo(item)}
-                className="block w-full text-left py-2 capitalize hover:text-blue-400 transition-colors"
+                className="block w-full text-left py-2 capitalize hover:text-blue-400 transition"
               >
                 {item}
               </button>

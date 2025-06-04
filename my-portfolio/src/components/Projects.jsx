@@ -1,6 +1,6 @@
-// components/Projects.jsx
 import React from "react";
 import { Github, ExternalLink } from "lucide-react";
+import { motion } from "framer-motion";
 
 const projects = [
   {
@@ -26,7 +26,7 @@ const projects = [
     description:
       "Note-taking app with full CRUD, filters, and responsive UI.",
     image: "notes.jpeg",
-    tech: ["React", "Node.js", "MongoDB", "Tailwind"],
+    tech: ["React", "Node.js", "MongoDB"],
     github: "https://github.com/aharsha7/Using-Redux.git",
     live: "https://using-redux-final.vercel.app/",
   },
@@ -35,14 +35,24 @@ const projects = [
 const Projects = () => (
   <section id="projects" className="py-20 bg-gray-800/50">
     <div className="max-w-7xl mx-auto px-4">
-      <h2 className="text-4xl md:text-5xl font-bold text-center mb-16 bg-gradient-to-r from-blue-400 to-purple-500 bg-clip-text text-transparent">
+      <motion.h2
+        className="text-4xl md:text-5xl font-bold text-center mb-16 bg-gradient-to-r from-blue-400 to-purple-500 bg-clip-text text-transparent"
+        initial={{ opacity: 0, y: -20 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        transition={{ duration: 0.6 }}
+        viewport={{ once: true }}
+      >
         Featured Projects
-      </h2>
+      </motion.h2>
       <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
         {projects.map((project, index) => (
-          <div
+          <motion.div
             key={index}
             className="bg-gray-800/50 rounded-xl overflow-hidden hover:bg-gray-800/70 transition-all duration-300 transform hover:scale-105 group"
+            initial={{ opacity: 0, y: 30 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.5, delay: index * 0.1 }}
+            viewport={{ once: true }}
           >
             <div className="relative overflow-hidden">
               <img
@@ -80,7 +90,7 @@ const Projects = () => (
                 </a>
               </div>
             </div>
-          </div>
+          </motion.div>
         ))}
       </div>
     </div>
