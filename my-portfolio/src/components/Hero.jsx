@@ -31,7 +31,7 @@ const Hero = ({ scrollTo }) => {
           animate={{ opacity: 1, scale: 1 }}
           transition={{ duration: 1 }}
         >
-          <div className="relative w-32 h-32 mx-auto mb-8 group">
+          <div className="relative w-24 h-24 sm:w-32 sm:h-32 md:w-40 md:h-40 mx-auto mb-8 group">
             <div className="w-full h-full rounded-full bg-gradient-to-r from-blue-400 to-purple-500 p-1 hover:scale-110 hover:rotate-6 transition-all duration-500">
               <div className="w-full h-full rounded-full bg-gray-900 flex items-center justify-center text-4xl font-bold">
                 <span className="bg-gradient-to-r from-blue-400 to-purple-500 bg-clip-text text-transparent hover:scale-125 transition-transform duration-300">
@@ -127,7 +127,7 @@ const Hero = ({ scrollTo }) => {
 
         {/* Scroll Indicator */}
         <motion.div
-          className="flex justify-center mt-16"
+          className="flex justify-center mt-4"
           animate={{ y: [0, 10, 0] }}
           transition={{ repeat: Infinity, duration: 2 }}
         >

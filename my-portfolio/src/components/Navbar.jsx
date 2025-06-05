@@ -7,7 +7,7 @@ const Navbar = ({ isMenuOpen, setIsMenuOpen, activeSection, scrollTo }) => {
   return (
     <nav className="fixed top-0 w-full bg-gray-900/90 backdrop-blur-md z-50 border-b border-gray-800/50 transition-all duration-300 animate-slide-down">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="flex justify-between items-center py-4">
+        <div className="flex justify-between items-center py-2">
           {/* Enhanced Logo */}
           <div className="group cursor-pointer">
             <div className="text-2xl font-bold bg-gradient-to-r from-cyan-400 via-blue-500 to-purple-600 bg-clip-text text-transparent bg-size-200 animate-gradient-x group-hover:scale-105 transition-transform duration-300">
