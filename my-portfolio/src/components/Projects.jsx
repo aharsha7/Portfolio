@@ -23,8 +23,7 @@ const projects = [
   },
   {
     title: "Notes Dashboard",
-    description:
-      "Note-taking app with full CRUD, filters, and responsive UI.",
+    description: "Note-taking app with full CRUD, filters, and responsive UI.",
     image: "notes.jpeg",
     tech: ["React", "Node.js", "MongoDB"],
     github: "https://github.com/aharsha7/Using-Redux.git",
@@ -33,7 +32,10 @@ const projects = [
 ];
 
 const Projects = () => (
-  <section id="projects" className="py-20 bg-gray-800/50 relative overflow-hidden">
+  <section
+    id="projects"
+    className="py-20 bg-gray-800/50 relative overflow-hidden"
+  >
     {/* Background elements */}
     <div className="absolute inset-0">
       <div className="absolute top-10 left-10 w-32 h-32 bg-blue-500/5 rounded-full blur-xl animate-pulse"></div>
@@ -42,7 +44,7 @@ const Projects = () => (
 
     <div className="max-w-7xl mx-auto px-4 relative z-10">
       <motion.h2
-        className="text-4xl md:text-5xl font-bold text-center mb-16 bg-gradient-to-r from-blue-400 to-purple-500 bg-clip-text text-transparent hover:scale-105 transition-transform duration-300"
+        className="text-4xl md:text-5xl font-bold text-center mb-16 bg-gradient-to-r from-blue-400 to-purple-500 bg-clip-text text-transparent leading-tight md:leading-snug tracking-tight overflow-visible"
         initial={{ opacity: 0, y: -20 }}
         whileInView={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.6 }}
@@ -75,10 +77,10 @@ const Projects = () => (
                 alt={project.title}
                 className="w-full h-48 object-cover group-hover:scale-110 transition-transform duration-500"
               />
-              
+
               {/* Gradient overlay */}
               <div className="absolute inset-0 bg-gradient-to-t from-gray-900/80 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
-              
+
               {/* Floating action buttons */}
               <div className="absolute top-4 right-4 flex gap-2 opacity-0 group-hover:opacity-100 translate-y-2 group-hover:translate-y-0 transition-all duration-300">
                 <div className="w-8 h-8 bg-white/10 backdrop-blur-sm rounded-full flex items-center justify-center hover:bg-white/20 hover:scale-110 transition-all duration-300">
@@ -136,19 +138,25 @@ const Projects = () => (
                   rel="noopener noreferrer"
                   className="flex items-center gap-2 px-4 py-2 bg-gray-700 hover:bg-gray-600 rounded-lg transition-all duration-300 transform hover:scale-105 hover:-translate-y-0.5 hover:shadow-lg group/btn"
                 >
-                  <Github size={16} className="group-hover/btn:rotate-12 transition-transform duration-300" /> 
+                  <Github
+                    size={16}
+                    className="group-hover/btn:rotate-12 transition-transform duration-300"
+                  />
                   <span>Code</span>
                 </a>
-                
+
                 <a
                   href={project.live}
                   target="_blank"
                   rel="noopener noreferrer"
                   className="flex items-center gap-2 px-4 py-2 bg-gradient-to-r from-blue-500 to-purple-600 hover:from-blue-600 hover:to-purple-700 rounded-lg transition-all duration-300 transform hover:scale-105 hover:-translate-y-0.5 hover:shadow-lg hover:shadow-blue-500/25 group/btn relative overflow-hidden"
                 >
-                  <ExternalLink size={16} className="group-hover/btn:rotate-12 transition-transform duration-300" /> 
+                  <ExternalLink
+                    size={16}
+                    className="group-hover/btn:rotate-12 transition-transform duration-300"
+                  />
                   <span>Live Demo</span>
-                  
+
                   {/* Button shine effect */}
                   <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/20 to-transparent -skew-x-12 translate-x-[-100%] group-hover/btn:translate-x-[200%] transition-transform duration-700"></div>
                 </a>

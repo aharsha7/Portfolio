@@ -3,6 +3,33 @@ import { Mail, Github, Linkedin, Send, ArrowRight, Star } from "lucide-react";
 
 const Contact = () => {
   const [hoveredCard, setHoveredCard] = useState(null);
+  const [formData, setFormData] = useState({ email: '', message: '' });
+  const [success, setSuccess] = useState(false);
+  const [error, setError] = useState("");
+
+  const handleInputChange = (e) => {
+    setFormData({
+      ...formData,
+      [e.target.name]: e.target.value
+    });
+  };
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    setSuccess(false);
+    setError("");
+
+    if (!formData.email || !formData.message) {
+      setError("Please fill in all fields");
+      return;
+    }
+
+    // Simulate email sending (replace with actual emailjs implementation)
+    setTimeout(() => {
+      setSuccess(true);
+      setFormData({ email: '', message: '' });
+    }, 1000);
+  };
 
   return (
     <section id="contact" className="py-20 relative overflow-hidden">
@@ -30,7 +57,7 @@ const Contact = () => {
         ))}
       </div>
 
-      <div className="max-w-4xl mx-auto px-4 relative z-10">
+      <div className="max-w-7xl mx-auto px-4 relative z-10">
         {/* Enhanced title with more complex animations */}
         <div className="text-center mb-16 space-y-4">
           <div className="overflow-hidden">
@@ -51,11 +78,14 @@ const Contact = () => {
           </div>
         </div>
 
-        <div className="flex justify-center">
-          <div className="max-w-md w-full space-y-8 relative">
-            {/* Glass morphism container */}
+        {/* Main content - Left and Right layout */}
+        <div className="flex flex-col lg:flex-row gap-12 items-start">
+          
+          {/* Left Side - Get in Touch Info & Social Links */}
+          <div className="flex-1 space-y-8">
+            {/* Glass morphism info container */}
             <div className="backdrop-blur-xl bg-white/5 rounded-3xl p-8 border border-white/10 shadow-2xl animate-float">
-              <div className="text-center space-y-6">
+              <div className="space-y-2">
                 <div className="relative">
                   <h3 className="text-3xl font-bold bg-gradient-to-r from-white to-gray-300 bg-clip-text text-transparent">
                     Get In Touch
@@ -64,88 +94,163 @@ const Contact = () => {
                 </div>
                 
                 <p className="text-gray-300 text-lg leading-relaxed animate-fade-in opacity-0" style={{animationDelay: '1s', animationFillMode: 'forwards'}}>
-                  Ready to turn ideas into reality? Let's build something extraordinary together! 🚀
+                  Have a question, suggestion, or just want to say hello? I'd love to hear from you. 
                 </p>
+
+                <div className="space-y-2 text-gray-300 animate-fade-in opacity-0" style={{animationDelay: '1.2s', animationFillMode: 'forwards'}}>
+                  <div className="flex items-center gap-3">
+                  
+                  </div>
+                  <div className="flex items-center gap-3">
+                    
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            {/* Enhanced contact cards */}
+            <div className="space-y-4">
+              {[
+                { 
+                  icon: Mail, 
+                  title: "Email", 
+                  subtitle: "aharsha7na@gmail.com", 
+                  href: "mailto:aharsha7na@gmail.com",
+                  gradient: "from-red-500 to-pink-500",
+                  delay: "0.2s"
+                },
+                { 
+                  icon: Linkedin, 
+                  title: "LinkedIn", 
+                  subtitle: "Connect professionally", 
+                  href: "https://www.linkedin.com/in/aharsha-vhardhan-s-/",
+                  gradient: "from-blue-500 to-cyan-500",
+                  delay: "0.4s"
+                },
+                { 
+                  icon: Github, 
+                  title: "GitHub", 
+                  subtitle: "Check out my code", 
+                  href: "https://github.com/aharsha7",
+                  gradient: "from-gray-600 to-gray-800",
+                  delay: "0.6s"
+                }
+              ].map((contact, index) => {
+                const Icon = contact.icon;
+                return (
+                  <a
+                    key={index}
+                    href={contact.href}
+                    target={contact.href.startsWith('mailto:') ? '_self' : '_blank'}
+                    rel={contact.href.startsWith('mailto:') ? '' : 'noopener noreferrer'}
+                    className="group block animate-slide-in-right opacity-0"
+                    style={{animationDelay: contact.delay, animationFillMode: 'forwards'}}
+                    onMouseEnter={() => setHoveredCard(index)}
+                    onMouseLeave={() => setHoveredCard(null)}
+                  >
+                    <div className="relative overflow-hidden rounded-2xl bg-gradient-to-r from-white/5 to-white/10 backdrop-blur-sm border border-white/20 p-6 transition-all duration-500 group-hover:scale-105 group-hover:shadow-2xl group-hover:border-white/40">
+                      {/* Animated background gradient */}
+                      <div className={`absolute inset-0 bg-gradient-to-r ${contact.gradient} opacity-0 group-hover:opacity-10 transition-opacity duration-500`}></div>
+                      
+                      {/* Ripple effect */}
+                      {hoveredCard === index && (
+                        <div className="absolute inset-0 bg-white/10 rounded-2xl animate-ping"></div>
+                      )}
+
+                      <div className="relative flex items-center gap-4">
+                        {/* Enhanced icon container */}
+                        <div className={`relative p-4 bg-gradient-to-r ${contact.gradient} rounded-xl group-hover:scale-110 transition-transform duration-300 shadow-lg`}>
+                          <Icon size={24} className="text-white relative z-10" />
+                          <div className="absolute inset-0 bg-white/20 rounded-xl blur-sm group-hover:blur-md transition-all duration-300"></div>
+                        </div>
+                        
+                        <div className="flex-1">
+                          <h4 className="font-bold text-lg text-white group-hover:text-transparent group-hover:bg-gradient-to-r group-hover:from-cyan-400 group-hover:to-purple-500 group-hover:bg-clip-text transition-all duration-300">
+                            {contact.title}
+                          </h4>
+                          <p className="text-gray-400 group-hover:text-gray-300 transition-colors duration-300">
+                            {contact.subtitle}
+                          </p>
+                        </div>
+                        
+                        {/* Animated arrow */}
+                        <ArrowRight 
+                          size={20} 
+                          className="text-gray-400 group-hover:text-white group-hover:translate-x-2 transition-all duration-300" 
+                        />
+                      </div>
+
+                      {/* Bottom border animation */}
+                      <div className={`absolute bottom-0 left-0 h-1 bg-gradient-to-r ${contact.gradient} w-0 group-hover:w-full transition-all duration-500 rounded-full`}></div>
+                    </div>
+                  </a>
+                );
+              })}
+            </div>
+          </div>
+
+          {/* Right Side - Contact Form */}
+          <div className="flex-1 w-full">
+            <div className="backdrop-blur-xl bg-white/5 rounded-3xl p-8 border border-white/10 shadow-2xl animate-float" style={{animationDelay: '0.5s'}}>
+              <div className="relative mb-16">
+                <h3 className="text-3xl font-bold bg-gradient-to-r from-white to-gray-300 bg-clip-text text-transparent">
+                  Send Message
+                </h3>
+                <div className="absolute -top-2 -right-2 w-6 h-6 bg-gradient-to-r from-cyan-400 to-purple-500 rounded-full animate-bounce opacity-60"></div>
               </div>
 
-              {/* Enhanced contact cards */}
-              <div className="space-y-4 mt-8">
-                {[
-                  { 
-                    icon: Mail, 
-                    title: "Email", 
-                    subtitle: "aharsha7na@gmail.com", 
-                    href: "mailto:aharsha7na@gmail.com",
-                    gradient: "from-red-500 to-pink-500",
-                    delay: "0.2s"
-                  },
-                  { 
-                    icon: Linkedin, 
-                    title: "LinkedIn", 
-                    subtitle: "Connect professionally", 
-                    href: "https://www.linkedin.com/in/aharsha-vhardhan-s-/",
-                    gradient: "from-blue-500 to-cyan-500",
-                    delay: "0.4s"
-                  },
-                  { 
-                    icon: Github, 
-                    title: "GitHub", 
-                    subtitle: "Check out my code", 
-                    href: "https://github.com/aharsha7",
-                    gradient: "from-gray-600 to-gray-800",
-                    delay: "0.6s"
-                  }
-                ].map((contact, index) => {
-                  const Icon = contact.icon;
-                  return (
-                    <a
-                      key={index}
-                      href={contact.href}
-                      target={contact.href.startsWith('mailto:') ? '_self' : '_blank'}
-                      rel={contact.href.startsWith('mailto:') ? '' : 'noopener noreferrer'}
-                      className="group block animate-slide-in-right opacity-0"
-                      style={{animationDelay: contact.delay, animationFillMode: 'forwards'}}
-                      onMouseEnter={() => setHoveredCard(index)}
-                      onMouseLeave={() => setHoveredCard(null)}
-                    >
-                      <div className="relative overflow-hidden rounded-2xl bg-gradient-to-r from-white/5 to-white/10 backdrop-blur-sm border border-white/20 p-6 transition-all duration-500 group-hover:scale-105 group-hover:shadow-2xl group-hover:border-white/40">
-                        {/* Animated background gradient */}
-                        <div className={`absolute inset-0 bg-gradient-to-r ${contact.gradient} opacity-0 group-hover:opacity-10 transition-opacity duration-500`}></div>
-                        
-                        {/* Ripple effect */}
-                        {hoveredCard === index && (
-                          <div className="absolute inset-0 bg-white/10 rounded-2xl animate-ping"></div>
-                        )}
+              <div className="space-y-6">
+                <div className="animate-fade-in opacity-0" style={{animationDelay: '1.4s', animationFillMode: 'forwards'}}>
+                  <label className="block text-gray-300 font-medium mb-2">Email</label>
+                  <input
+                    type="email"
+                    name="email"
+                    value={formData.email}
+                    onChange={handleInputChange}
+                    required
+                    placeholder="you@example.com"
+                    className="w-full px-4 py-3 bg-white/10 border border-white/20 rounded-xl text-white placeholder-gray-400 focus:ring-2 focus:ring-cyan-500 focus:border-transparent outline-none backdrop-blur-sm transition-all duration-300 hover:bg-white/15"
+                  />
+                </div>
 
-                        <div className="relative flex items-center gap-4">
-                          {/* Enhanced icon container */}
-                          <div className={`relative p-4 bg-gradient-to-r ${contact.gradient} rounded-xl group-hover:scale-110 transition-transform duration-300 shadow-lg`}>
-                            <Icon size={24} className="text-white relative z-10" />
-                            <div className="absolute inset-0 bg-white/20 rounded-xl blur-sm group-hover:blur-md transition-all duration-300"></div>
-                          </div>
-                          
-                          <div className="flex-1">
-                            <h4 className="font-bold text-lg text-white group-hover:text-transparent group-hover:bg-gradient-to-r group-hover:from-cyan-400 group-hover:to-purple-500 group-hover:bg-clip-text transition-all duration-300">
-                              {contact.title}
-                            </h4>
-                            <p className="text-gray-400 group-hover:text-gray-300 transition-colors duration-300">
-                              {contact.subtitle}
-                            </p>
-                          </div>
-                          
-                          {/* Animated arrow */}
-                          <ArrowRight 
-                            size={20} 
-                            className="text-gray-400 group-hover:text-white group-hover:translate-x-2 transition-all duration-300" 
-                          />
-                        </div>
+                <div className="animate-fade-in opacity-0" style={{animationDelay: '1.6s', animationFillMode: 'forwards'}}>
+                  <label className="block text-gray-300 font-medium mb-2">Message</label>
+                  <textarea
+                    name="message"
+                    value={formData.message}
+                    onChange={handleInputChange}
+                    required
+                    rows="6"
+                    placeholder="Type your message..."
+                    className="w-full px-4 py-3 bg-white/10 border border-white/20 rounded-xl text-white placeholder-gray-400 focus:ring-2 focus:ring-cyan-500 focus:border-transparent outline-none backdrop-blur-sm transition-all duration-300 hover:bg-white/15 resize-none"
+                  ></textarea>
+                </div>
 
-                        {/* Bottom border animation */}
-                        <div className={`absolute bottom-0 left-0 h-1 bg-gradient-to-r ${contact.gradient} w-0 group-hover:w-full transition-all duration-500 rounded-full`}></div>
-                      </div>
-                    </a>
-                  );
-                })}
+                <div className="animate-fade-in opacity-0" style={{animationDelay: '1.8s', animationFillMode: 'forwards'}}>
+                  <button
+                    onClick={handleSubmit}
+                    className="group w-full bg-gradient-to-r from-cyan-500 to-purple-500 hover:from-cyan-600 hover:to-purple-600 text-white py-4 rounded-xl font-semibold transition-all duration-300 transform hover:scale-105 hover:shadow-2xl flex items-center justify-center gap-3 relative overflow-hidden"
+                  >
+                    <div className="absolute inset-0 bg-gradient-to-r from-white/0 via-white/20 to-white/0 translate-x-[-100%] group-hover:translate-x-[100%] transition-transform duration-700"></div>
+                    <Send size={20} className="group-hover:rotate-12 transition-transform duration-300" />
+                    <span className="relative z-10">Send Message</span>
+                  </button>
+                </div>
+
+                {success && (
+                  <div className="text-center">
+                    <p className="text-green-400 text-sm bg-green-500/10 border border-green-500/20 rounded-lg p-3 backdrop-blur-sm">
+                      ✅ Message sent successfully!
+                    </p>
+                  </div>
+                )}
+                {error && (
+                  <div className="text-center">
+                    <p className="text-red-400 text-sm bg-red-500/10 border border-red-500/20 rounded-lg p-3 backdrop-blur-sm">
+                      ❌ {error}
+                    </p>
+                  </div>
+                )}
               </div>
             </div>
           </div>
