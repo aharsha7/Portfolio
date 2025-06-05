@@ -45,7 +45,7 @@ const Footer = () => {
       {/* Bottom Accent Line */}
       <div className="absolute bottom-0 left-0 right-0 h-0.5 bg-gradient-to-r from-blue-500 via-purple-500 to-pink-500 opacity-60 animate-pulse-glow"></div>
 
-      <style jsx>{`
+      <style>{`
         @keyframes fade-in {
           from { opacity: 0; }
           to { opacity: 1; }

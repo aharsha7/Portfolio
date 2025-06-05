@@ -92,7 +92,7 @@ const Navbar = ({ isMenuOpen, setIsMenuOpen, activeSection, scrollTo }) => {
         </div>
       </div>
 
-      <style jsx>{`
+      <style>{`
         @keyframes slide-down {
           from {
             transform: translateY(-100%);
